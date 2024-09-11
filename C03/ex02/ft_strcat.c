@@ -1,36 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: huburton <huburton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/09 15:38:36 by huburton          #+#    #+#             */
-/*   Updated: 2024/09/11 18:47:27 by huburton         ###   ########.fr       */
+/*   Created: 2024/09/11 15:30:09 by huburton          #+#    #+#             */
+/*   Updated: 2024/09/11 16:23:32 by huburton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* #include <stdio.h> */
+/* #include <stdio.h>
+#include <string.h> */
 
-int	ft_str_is_printable(char *str)
+int	ft_strlen(char *str)
 {
 	int	i;
 
-	i = -1;
-	if (str[0] == 0)
-		return (1);
-	while (str[++i])
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+char	*ft_strcat(char *dest, char *src)
+{
+	int	i;
+	int	destlen;
+
+	i = 0;
+	destlen = ft_strlen(dest);
+	while (src[i])
 	{
-		if (str[i] < 32 || str[i] == 127)
-			return (0);
+		dest[destlen + i] = src[i];
+		i++;
 	}
-	return (1);
+	dest[destlen + i] = 0;
+	return (dest);
 }
 
 /* int main(void)
 {
-	char str[8] = "bgvdgvb";
+	char dest[13] = "He";
+	char src[11] = "llo World!";
 
-	printf("%d\n", ft_str_is_printable(str));
-	return 0;
+	printf("%s\n", strcat(dest, src));
+	printf("%s", ft_strcat(dest, src));
 } */

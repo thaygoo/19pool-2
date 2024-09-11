@@ -1,44 +1,66 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: huburton <huburton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/09 14:20:26 by huburton          #+#    #+#             */
-/*   Updated: 2024/09/11 15:55:43 by huburton         ###   ########.fr       */
+/*   Created: 2024/09/11 14:43:12 by huburton          #+#    #+#             */
+/*   Updated: 2024/09/11 14:59:12 by huburton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* #include <string.h>
 #include <stdio.h> */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+int	ft_strlen(char *str)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
-	while (src[i] && i < n)
-	{
-		dest[i] = src[i];
+	while (str[i])
 		i++;
-	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
+	return (i);
 }
 
-/* int main(void)
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	char src[13] = "Hello World!";
+	unsigned int	i;
+	unsigned int	j;
+
+	i = ft_strlen(src);
+	j = 0;
+	if (i + 1 < size)
+	{
+		while (j < i + 1)
+		{
+			dest[j] = src[j];
+			j++;
+		}
+	}
+	else if (size > 0)
+	{
+		while (j < size - 1)
+		{
+			dest[j] = src[j];
+			j++;
+		}
+		dest[j] = 0;
+	}
+	return (i);
+}
+
+/* int	main(void)
+{
 	char dst[13] = "Halo  adazdk";
+	char src[13] = "Hello World!";
 	int i = 0;
 
-	ft_strncpy(dst, src, 5);
+	int n = strlcpy(dst, src, 5);
 	while (dst[i])
 		printf("%c", dst[i++]);
-	return 0;
+	while (src[i])
+		printf(":%c,", src[i++]);	
+
+	printf("\n%d", n);
 } */
