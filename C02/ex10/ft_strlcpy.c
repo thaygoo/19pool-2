@@ -6,12 +6,12 @@
 /*   By: huburton <huburton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 14:43:12 by huburton          #+#    #+#             */
-/*   Updated: 2024/09/11 14:59:12 by huburton         ###   ########.fr       */
+/*   Updated: 2024/09/12 18:30:45 by huburton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* #include <string.h>
-#include <stdio.h> */
+#include <string.h>
+#include <stdio.h>
 
 int	ft_strlen(char *str)
 {
@@ -50,17 +50,19 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 	return (i);
 }
 
-/* int	main(void)
+int	main(void)
 {
 	char dst[13] = "Halo  adazdk";
 	char src[13] = "Hello World!";
 	int i = 0;
 
-	int n = strlcpy(dst, src, 5);
+	int n = ft_strlcpy(dst, src, 6);
+	printf("dst : ");
 	while (dst[i])
 		printf("%c", dst[i++]);
+	printf("\nsrc : ");
 	while (src[i])
-		printf(":%c,", src[i++]);	
+		printf("%c", src[i++]);	
 
 	printf("\n%d", n);
-} */
+}
