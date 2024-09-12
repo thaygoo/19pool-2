@@ -6,7 +6,7 @@
 /*   By: huburton <huburton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 13:36:56 by huburton          #+#    #+#             */
-/*   Updated: 2024/09/12 13:40:42 by huburton         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:39:50 by huburton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,3 +65,8 @@ void	ft_putnbr2(int nb, char *t, int nbdigits, int isneg)
 	}
 	display(t, nbdigits - 1, isneg);
 }
+
+/* int main(void)
+{
+	ft_putnbr(-58442);
+} */
