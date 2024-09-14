@@ -6,7 +6,7 @@
 /*   By: huburton <huburton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 15:38:36 by huburton          #+#    #+#             */
-/*   Updated: 2024/09/09 15:42:37 by huburton         ###   ########.fr       */
+/*   Updated: 2024/09/12 13:11:18 by huburton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_str_is_printable(char *str)
 		return (1);
 	while (str[++i])
 	{
-		if (str[i] <= 32 || str[i] == 127)
+		if (str[i] < 32 || str[i] == 127)
 			return (0);
 	}
 	return (1);

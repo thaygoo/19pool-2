@@ -1,44 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: huburton <huburton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/09 14:20:26 by huburton          #+#    #+#             */
-/*   Updated: 2024/09/11 15:55:43 by huburton         ###   ########.fr       */
+/*   Created: 2024/09/11 15:23:38 by huburton          #+#    #+#             */
+/*   Updated: 2024/09/11 15:30:20 by huburton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* #include <string.h>
-#include <stdio.h> */
+/* #include <stdio.h>
+#include <string.h> */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
-	while (src[i] && i < n)
+	while (s1[i] && s1[i] == s2[i] && n > 0)
 	{
-		dest[i] = src[i];
 		i++;
+		n--;
 	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
+	if (n == 0)
+		return (0);
+	return (s1[i] - s2[i]);
 }
 
 /* int main(void)
 {
+	char dst[13] = "Hello W0rld!";
 	char src[13] = "Hello World!";
-	char dst[13] = "Halo  adazdk";
 	int i = 0;
 
-	ft_strncpy(dst, src, 5);
-	while (dst[i])
-		printf("%c", dst[i++]);
-	return 0;
+	printf("%d\n", strncmp(dst, src, 10));
+	printf("%d", ft_strncmp(dst, src, 10));
 } */

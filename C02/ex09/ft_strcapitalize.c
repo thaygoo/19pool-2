@@ -6,7 +6,7 @@
 /*   By: huburton <huburton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 16:38:45 by huburton          #+#    #+#             */
-/*   Updated: 2024/09/09 17:00:41 by huburton         ###   ########.fr       */
+/*   Updated: 2024/09/11 14:43:51 by huburton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ char	*ft_strcapitalize(char *str)
 
 /* int main(void)
 {
-	char str[62] = "salut, comment tu vas ? 42mots quarante-deux; cinquante+et+un";
+	char str[62] = "salut, comment tu vas ? 
+		42mots quarante-deux; cinquante+et+un";
 
 	printf("%s", ft_strcapitalize(str));
 } */

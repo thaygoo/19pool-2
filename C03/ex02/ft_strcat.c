@@ -1,44 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: huburton <huburton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/09 14:20:26 by huburton          #+#    #+#             */
-/*   Updated: 2024/09/11 15:55:43 by huburton         ###   ########.fr       */
+/*   Created: 2024/09/11 15:30:09 by huburton          #+#    #+#             */
+/*   Updated: 2024/09/11 16:23:32 by huburton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* #include <string.h>
-#include <stdio.h> */
+/* #include <stdio.h>
+#include <string.h> */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+int	ft_strlen(char *str)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
-	while (src[i] && i < n)
+	while (str[i])
+		i++;
+	return (i);
+}
+
+char	*ft_strcat(char *dest, char *src)
+{
+	int	i;
+	int	destlen;
+
+	i = 0;
+	destlen = ft_strlen(dest);
+	while (src[i])
 	{
-		dest[i] = src[i];
+		dest[destlen + i] = src[i];
 		i++;
 	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
+	dest[destlen + i] = 0;
 	return (dest);
 }
 
 /* int main(void)
 {
-	char src[13] = "Hello World!";
-	char dst[13] = "Halo  adazdk";
-	int i = 0;
+	char dest[13] = "He";
+	char src[11] = "llo World!";
 
-	ft_strncpy(dst, src, 5);
-	while (dst[i])
-		printf("%c", dst[i++]);
-	return 0;
+	printf("%s\n", strcat(dest, src));
+	printf("%s", ft_strcat(dest, src));
 } */
