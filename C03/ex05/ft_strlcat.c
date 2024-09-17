@@ -6,7 +6,7 @@
 /*   By: huburton <huburton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 16:18:24 by huburton          #+#    #+#             */
-/*   Updated: 2024/09/12 16:24:43 by huburton         ###   ########.fr       */
+/*   Updated: 2024/09/17 14:41:38 by huburton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 	return (length + i);
 }
 
-#include <string.h>
+/* #include <string.h>
 #include <stdio.h>
 
 int	main(void)
@@ -42,4 +42,4 @@ int	main(void)
 
 	printf("ft_ :%d \n", ft_strlcat(s1, s2, 4));
 	printf(" _ :%lu \n", strlcat(s1, s2, 4));
-}
+} */
