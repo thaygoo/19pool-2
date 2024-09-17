@@ -1,37 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iteractive_factorial.c                          :+:      :+:    :+:   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: huburton <huburton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/17 14:12:03 by huburton          #+#    #+#             */
-/*   Updated: 2024/09/17 14:12:12 by huburton         ###   ########.fr       */
+/*   Created: 2024/09/17 14:14:08 by huburton          #+#    #+#             */
+/*   Updated: 2024/09/17 14:19:21 by huburton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_iterative_factorial(int nb)
+int	ft_is_prime(int nb)
 {
-	int	res;
-	int	i;
+	int			i;
+	long int	n;
 
-	res = 1;
-	i = 1;
-	if (nb < 0 || nb > 12)
+	n = (long int)nb;
+	if (n == 2)
+		return (1);
+	if (n % 2 == 0 || n < 2)
 		return (0);
-	while (i <= nb)
+	i = 3;
+	while (i <= n / i)
 	{
-		res *= i;
+		if (n % i == 0)
+			return (0);
 		i++;
 	}
-	return (res);
+	return (1);
 }
 
-/** #include <stdio.h>
+/* #include <stdio.h>
 
-int	main(int argc, char const *argv[])
+int	main(void)
 {
-	printf("20 :  %d", ft_iterative_factorial(5));
+	printf("4 :  %d", ft_is_prime(4));
+	printf("5 :  %d", ft_is_prime(5));
 	return (0);
-}
- **/
+} */

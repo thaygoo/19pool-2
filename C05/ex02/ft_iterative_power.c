@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iteractive_factorial.c                          :+:      :+:    :+:   */
+/*   ft_iterative_power.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: huburton <huburton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/17 14:12:03 by huburton          #+#    #+#             */
-/*   Updated: 2024/09/17 14:12:12 by huburton         ###   ########.fr       */
+/*   Created: 2024/09/17 14:13:55 by huburton          #+#    #+#             */
+/*   Updated: 2024/09/17 14:15:23 by huburton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_iterative_factorial(int nb)
+int	ft_iterative_power(int nb, int power)
 {
-	int	res;
 	int	i;
+	int	res;
 
-	res = 1;
 	i = 1;
-	if (nb < 0 || nb > 12)
+	res = 1;
+	if (power < 0)
 		return (0);
-	while (i <= nb)
+	while (i <= power)
 	{
-		res *= i;
+		res *= nb;
 		i++;
 	}
 	return (res);
@@ -29,9 +29,9 @@ int	ft_iterative_factorial(int nb)
 
 /** #include <stdio.h>
 
-int	main(int argc, char const *argv[])
+int	main(void)
 {
-	printf("20 :  %d", ft_iterative_factorial(5));
+	printf("4^2 :  %d", ft_iterative_power(4, 2));
 	return (0);
 }
  **/
