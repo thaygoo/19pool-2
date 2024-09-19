@@ -6,11 +6,11 @@
 /*   By: huburton <huburton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 18:38:29 by huburton          #+#    #+#             */
-/*   Updated: 2024/09/17 18:41:05 by huburton         ###   ########.fr       */
+/*   Updated: 2024/09/19 15:58:23 by huburton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_ABS_H
 # define FT_ABS_H
-# define ABS(X) ((X < 0) ? -X : X)
+# define ABS(X) (X * ((X > 0) - (X < 0)))
 #endif
