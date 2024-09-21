@@ -6,11 +6,11 @@
 /*   By: huburton <huburton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 17:57:52 by huburton          #+#    #+#             */
-/*   Updated: 2024/09/21 17:58:29 by huburton         ###   ########.fr       */
+/*   Updated: 2024/09/21 19:44:39 by huburton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rush02.h"
+#include "includes/rush02.h"
 
 void	ft_putstr(char *str)
 {

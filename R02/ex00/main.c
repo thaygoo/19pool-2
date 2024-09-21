@@ -6,11 +6,11 @@
 /*   By: huburton <huburton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 15:23:30 by huburton          #+#    #+#             */
-/*   Updated: 2024/09/21 17:58:46 by huburton         ###   ########.fr       */
+/*   Updated: 2024/09/21 19:44:31 by huburton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rush02.h"
+#include "includes/rush02.h"
 
 void	ft_find_word(char *filename, char *input_word)
 {
@@ -71,11 +71,11 @@ void	ft_find_word(char *filename, char *input_word)
 
 int	main(int argc, char **argv)
 {
-	if (argc != 3)
-	{
-		ft_putstr("Usage: ./dictionary <file> <word>\n");
-		return (1);
-	}
-	ft_find_word(argv[1], argv[2]);
+	if (argc == 2) // Use default Dict (numbers.dict)
+		ft_find_word("numbers.dict", argv[1]);
+	else if (argc == 3) // Use custom Dict
+		ft_find_word(argv[1], argv[2]);
+	else
+		ft_putstr("You need between one or two arguments.\n");
 	return (0);
 }
