@@ -6,29 +6,50 @@
 /*   By: huburton <huburton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 15:23:30 by huburton          #+#    #+#             */
-/*   Updated: 2024/09/21 19:44:31 by huburton         ###   ########.fr       */
+/*   Updated: 2024/09/21 20:24:31 by huburton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/rush02.h"
 
-void	ft_find_word(char *filename, char *input_word)
+int	open_file(const char *filename)
 {
-	int		fd;
-	int		ret;
-	char	buffer[BUFFER_SIZE + 1];
-	char	*word1;
-	char	*word2;
-	int		i;
-	int		start;
+	int	fd;
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 	{
 		ft_putstr("Error: could not open the file\n");
-		return ;
+		return (-1);
 	}
-	ret = read(fd, buffer, BUFFER_SIZE);
+	return (fd);
+}
+
+int	read_from_file(int fd, char *buffer, int buffer_size)
+{
+	int	ret;
+
+	ret = read(fd, buffer, buffer_size);
+	if (ret == -1)
+	{
+		ft_putstr("Error: could not read from the file\n");
+		return (-1);
+	}
+	return (ret);
+}
+
+void	ft_find_word(char *filename, char *input_word)
+{
+	char	buffer[BUFFER_SIZE + 1];
+	char	*word1;
+	char	*word2;
+	int		fd;
+	int		ret;
+	int		i;
+	int		start;
+
+	fd = open_file(filename);
+	ret = read_from_file(fd, buffer, BUFFER_SIZE);
 	while (ret > 0)
 	{
 		buffer[ret] = '\0';
@@ -79,3 +100,10 @@ int	main(int argc, char **argv)
 		ft_putstr("You need between one or two arguments.\n");
 	return (0);
 }
+
+/* 
+ - IF NUMBER IS NEGATIF RETURN "Error" 
+ - Parse the dictionnary
+ - FREE THE MALLOC !!!!!
+ - 
+*/
