@@ -6,92 +6,129 @@
 /*   By: huburton <huburton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:48:00 by hburton           #+#    #+#             */
-/*   Updated: 2024/09/25 18:40:37 by huburton         ###   ########.fr       */
+/*   Updated: 2024/09/26 13:35:48 by huburton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
-static void	ft_memclear(char **strs, int last)
+int	ft_ischarset(char c, char *charset)
 {
 	int	i;
 
 	i = 0;
-	while (i < last)
+	while (charset[i])
 	{
-		ft_bzero(*(strs + i), ft_strlen(*(strs + i)));
-		free(*(strs + i));
-		*(strs + i) = NULL;
+		if (c == charset[i])
+			return (1);
+		else
+			i++;
+	}
+	return (0);
+}
+
+int	ft_count(char *str, char *charset)
+{
+	int	count;
+	int	i;
+
+	count = 0;
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_ischarset(str[i], charset))
+		{
+			count++;
+			while (!ft_ischarset(str[i], charset) && str[i])
+				i++;
+		}
+		else
+			i++;
+	}
+	return (count);
+}
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+char	*ft_strdup(char *str, char *charset)
+{
+	int		len;
+	int		i;
+	char	*dup;
+
+	i = 0;
+	len = ft_strlen(str);
+	dup = malloc(sizeof(char) * len + 1);
+	if (!dup)
+		return (NULL);
+	while (str[i] && !ft_ischarset(str[i], charset))
+	{
+		dup[i] = str[i];
 		i++;
 	}
-	free(strs);
+	dup[i] = '\0';
+	return (dup);
 }
 
-static char	*ft_skiper(char *s, char d, int o)
+char	**ft_split(char *str, char *charset)
 {
-	if (o)
-	{
-		while (*s == d && *s)
-			s++;
-	}
-	else
-	{
-		while (*s != d && *s)
-			s++;
-	}
-	return (s);
-}
-
-static int	ft_strdlen(char *s, char d)
-{
-	int	c;
-
-	c = 0;
-	while (*(s + c) && *(s + c) != d)
-		c++;
-	return (c);
-}
-
-static char	**ft_realloc(char **t, int l)
-{
-	char	**new;
+	char	**split;
 	int		i;
+	int		j;
+	int		count;
 
-	new = (char **)malloc(sizeof(char *) * (l + 1));
-	if (new)
-	{
-		i = -1;
-		while (++i < l)
-			*(new + i) = *(t + i);
-		return (free(t), new);
-	}
-	return (ft_memclear(t, l), NULL);
-}
-
-char	**ft_split(char const *s, char c)
-{
-	char	**strs;
-	int		i;
-
-	if (!s)
+	i = 0;
+	j = 0;
+	count = ft_count(str, charset);
+	split = malloc(sizeof(char *) * count + 1);
+	if (!split)
 		return (NULL);
-	strs = (char **)malloc(sizeof(char *));
-	if (strs)
+	while (str[i])
 	{
-		i = 0;
-		s = ft_skiper((char *)s, c, 1);
-		while (*s)
+		if (!ft_ischarset(str[i], charset))
 		{
-			*(strs + i) = ft_substr(s, 0, ft_strdlen((char *)s, c));
-			if (!*(strs + i))
-				return (ft_memclear(strs, i), NULL);
-			strs = ft_realloc(strs, ++i);
-			if (!strs)
-				return (NULL);
-			s = ft_skiper((char *)s, c, 0);
-			s = ft_skiper((char *)s, c, 1);
+			split[j] = ft_strdup(&str[i], charset);
+			j++;
+			while (!ft_ischarset(str[i], charset) && str[i])
+				i++;
 		}
-		*(strs + i) = NULL;
+		else
+			i++;
 	}
-	return (strs);
+	split[j] = NULL;
+	return (split);
 }
+
+/* #include <stdio.h>
+#include <stdlib.h>
+
+int	main() {
+	char *str = "Hello, world! This is a test string.";
+	char *charset = " ,";
+	char **split = ft_split(str, charset);
+
+	if (split == NULL) {
+		printf("Error: ft_split returned NULL\n");
+		return 1;
+	}
+
+    printf("Split strings:\n");
+    for (int i = 0; split[i] != NULL; i++) {
+        printf("%s\n", split[i]);
+    }
+
+    for (int i = 0; split[i] != NULL; i++) {
+        free(split[i]);
+    }
+    free(split);
+
+    return 0;
+} */
